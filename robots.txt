@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://growthbydaphne.com/sitemap.xml
