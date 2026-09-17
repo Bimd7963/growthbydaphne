@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Gérez les cookies et vos préférences de consentement sur le site Growth by Daphné.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://growthbydaphne.com/gestiondescookies.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gestion des Cookies | Growth by Daphné">
+<meta property="og:description" content="Consultez et gérez vos préférences de cookies sur Growth by Daphné.">
+<meta property="og:url" content="https://growthbydaphne.com/gestiondescookies.html">
+<meta property="og:site_name" content="Growth by Daphné">
+<title>Gestion des Cookies | Growth by Daphné</title>
+<script src="./consent.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,0..40,400&amp;family=Caveat:wght@400;600&amp;family=Ms+Madi&amp;display=swap" rel="stylesheet">
+<style>
+  @font-face { font-family: "Signature"; src: url("uploads/my-ugly-handwritting.regular.otf") format("opentype"); font-display: swap; }
+  :root { --plum:#3D1D33; --cream:#FFF3E6; --paper:#FFF9EE; --gold:#E0B84A; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--cream); color:var(--plum); font-family:'DM Sans',sans-serif; }
+  a { color:inherit; text-underline-offset:3px; }
+  a:hover, a:focus { color:#9A7621; }
+  .nav { background:var(--plum); color:var(--cream); padding:20px clamp(20px,5vw,60px) 0; }
+  .nav-inner { max-width:1080px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:24px; border-bottom:1px solid rgba(255,243,230,.22); padding-bottom:18px; }
+  .brand { font-family:'Playfair Display',serif; font-size:16px; font-weight:900; letter-spacing:.05em; text-decoration:none; }
+  .brand span { font-family:'Signature','Ms Madi',cursive; color:var(--gold); font-size:21px; font-weight:400; letter-spacing:0; }
+  .back { font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.78; text-decoration:none; }
+  .hero { background:var(--plum); color:var(--cream); padding:clamp(42px,7vw,72px) clamp(20px,5vw,60px) clamp(48px,8vw,82px); }
+  .hero-inner, .content { max-width:1080px; margin:0 auto; }
+  .eyebrow, .section-label { font-size:11px; font-weight:500; letter-spacing:.28em; text-transform:uppercase; opacity:.68; line-height:1.7; }
+  .rule { width:72px; height:3px; background:var(--gold); margin:20px 0; }
+  h1, h2, h3 { font-family:'Playfair Display',serif; font-weight:400; }
+  h1 { max-width:650px; margin:0 0 18px; font-size:clamp(34px,6vw,58px); line-height:1.1; }
+  .hero p { max-width:620px; margin:0; font-size:16px; line-height:1.7; opacity:.82; }
+  main { padding:clamp(42px,7vw,72px) clamp(20px,5vw,60px) clamp(60px,9vw,96px); }
+  .intro { margin-bottom:42px; }
+  .intro .section-label { margin-bottom:14px; }
+  .intro p, .legal-note { max-width:68ch; font-size:15.5px; line-height:1.75; opacity:.84; }
+  .section { padding:34px 0; border-top:1px solid rgba(61,29,51,.14); }
+  .section h2 { margin:0 0 20px; font-size:clamp(24px,3vw,32px); line-height:1.2; }
+  .section h2 span { color:var(--gold); font-size:14px; font-style:italic; margin-right:10px; }
+  .preferences { display:grid; gap:12px; }
+  .preference { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:20px; background:var(--paper); border:1px solid rgba(61,29,51,.12); border-radius:5px; }
+  .preference h3 { margin:0 0 6px; font-size:20px; }
+  .preference p { max-width:60ch; margin:0; font-size:14px; line-height:1.65; opacity:.78; }
+  .badge { flex:none; padding:6px 10px; border:1px solid rgba(61,29,51,.25); border-radius:3px; font-size:10px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; }
+  .badge.required { border-color:var(--gold); color:#80621c; }
+  .preference-toggle { display:flex; align-items:center; gap:10px; flex:none; color:var(--plum); font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; }
+  .preference-toggle input { position:absolute; width:1px; height:1px; opacity:0; }
+  .toggle { position:relative; display:inline-block; width:42px; height:24px; border:1px solid rgba(61,29,51,.35); border-radius:20px; background:rgba(61,29,51,.08); transition:background .2s ease,border-color .2s ease; }
+  .toggle::after { position:absolute; top:3px; left:3px; width:16px; height:16px; border-radius:50%; background:var(--plum); content:""; transition:transform .2s ease,background .2s ease; }
+  .preference-toggle input:checked + .toggle { border-color:var(--gold); background:var(--gold); }
+  .preference-toggle input:checked + .toggle::after { background:var(--plum); transform:translateX(18px); }
+  .preference-toggle input:focus-visible + .toggle { outline:2px solid var(--gold); outline-offset:3px; }
+  .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+  .actions button { padding:13px 18px; border:1px solid var(--plum); border-radius:4px; background:transparent; color:var(--plum); font:500 13px 'DM Sans',sans-serif; cursor:pointer; }
+  .actions .primary { background:var(--gold); border-color:var(--gold); }
+  .status { min-height:22px; margin:14px 0 0; font-size:13px; opacity:.72; }
+  .cookie-list { border-top:1px solid rgba(61,29,51,.16); }
+  .cookie-row { display:grid; grid-template-columns:1fr 1.7fr .65fr; gap:18px; align-items:baseline; padding:20px 0; border-bottom:1px solid rgba(61,29,51,.16); font-size:13.5px; line-height:1.5; }
+  .cookie-row strong { font-family:'Playfair Display',serif; font-size:20px; font-weight:400; }
+  .cookie-row span:last-child { color:#80621c; font-size:12px; font-weight:500; }
+  .links { display:flex; flex-wrap:wrap; gap:10px 24px; font-size:14px; line-height:1.7; }
+  footer { padding:22px clamp(20px,5vw,60px); border-top:1px solid rgba(61,29,51,.14); }
+  .footer-inner { max-width:1080px; margin:0 auto; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between; }
+  .footer-brand { display:flex; align-items:baseline; gap:6px; text-decoration:none; }
+  .footer-brand strong { font-family:'Playfair Display',serif; font-size:14px; letter-spacing:.05em; }
+  .footer-brand span { color:var(--gold); font-family:'Signature','Ms Madi',cursive; font-size:18px; }
+  .footer-links { font-size:10px; letter-spacing:.2em; text-transform:uppercase; opacity:.65; }
+  @media (max-width:700px) { .nav-inner { align-items:flex-start; flex-direction:column; } .preference { align-items:flex-start; flex-direction:column; } .cookie-row { grid-template-columns:1fr; gap:6px; } .cookie-row span:last-child { font-size:11px; } }
+</style>
+</head>
+<body data-cookie-settings-page>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Transparence &amp; contrôle</div>
+    <div class="rule"></div>
+    <h1>Gestion des Cookies</h1>
+    <p>Dernière mise à jour : septembre 2026</p>
+  </div>
+</section>
+<main>
+  <div class="content">
+    <section class="intro">
+      <div class="section-label">01 — Pourquoi cette page</div>
+      <p>Un cookie est un petit fichier déposé sur votre appareil lors de votre visite. Certains sont nécessaires au fonctionnement du site. D'autres, optionnels, servent à mesurer l'audience ou l'efficacité de nos campagnes et nécessitent votre accord préalable.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-label">02 — Vos préférences</div>
+      <h2>Vous gardez le contrôle.</h2>
+      <div class="preferences">
+        <article class="preference"><div><h3>Cookies essentiels</h3><p>Nécessaires au fonctionnement du site et à la mémorisation de votre choix. Ils ne servent pas à mesurer votre navigation.</p></div><span class="badge required">Toujours actifs</span></article>
+        <article class="preference"><div><h3>Audience et comportement</h3><p>Google Analytics et Microsoft Clarity mesurent la fréquentation et l'ergonomie du site.</p></div><label class="preference-toggle"><input type="checkbox" id="cookie-analytics"><span class="toggle" aria-hidden="true"></span><span>Autoriser</span></label></article>
+        <article class="preference"><div><h3>Publicité et remarketing</h3><p>Meta Pixel et les signaux publicitaires mesurent l'efficacité des campagnes et permettent le remarketing.</p></div><label class="preference-toggle"><input type="checkbox" id="cookie-advertising"><span class="toggle" aria-hidden="true"></span><span>Autoriser</span></label></article>
+      </div>
+      <div class="actions"><button type="button" data-cookie-choice="accepted" class="primary">Tout accepter</button><button type="button" data-cookie-choice="refused">Tout refuser</button><button type="button" id="save-cookie-preferences">Enregistrer mes choix</button></div>
+      <p class="status" id="cookie-status" aria-live="polite"></p>
+    </section>
+
+    <section class="section">
+      <div class="section-label">03 — Détail des cookies utilisés</div>
+      <h2>Les cookies concernés.</h2>
+      <div class="cookie-list">
+        <div class="cookie-row"><strong>Google Analytics</strong><span>Mesure d'audience : visiteurs, pages consultées et durée des sessions.</span><span>14 mois</span></div>
+        <div class="cookie-row"><strong>Microsoft Clarity</strong><span>Analyse comportementale anonymisée pour améliorer l'ergonomie du site.</span><span>13 mois</span></div>
+        <div class="cookie-row"><strong>Meta Pixel</strong><span>Mesure publicitaire et remarketing sur Facebook et Instagram.</span><span>90 jours</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">04 — Liens utiles</div>
+      <h2>Pour aller plus loin.</h2>
+      <div class="links"><a href="/confidentialite.html">→ Politique de confidentialité</a><a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/que-dit-la-loi" target="_blank" rel="noopener">→ Règlementation cookies — CNIL</a><a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">→ Désactiver Google Analytics</a></div>
+    </section>
+  </div>
+</main>
+<p style="max-width:820px;margin:-38px auto 56px;padding:0 clamp(20px,5vw,60px);font-size:13px;opacity:.7"><a href="/">← Growth by Daphné</a></p>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const status = document.getElementById("cookie-status");
+    const analytics = document.getElementById("cookie-analytics");
+    const advertising = document.getElementById("cookie-advertising");
+    const saved = () => {
+      try { return JSON.parse(localStorage.getItem("bd_cookie_consent")); } catch (error) { return null; }
+    };
+    const renderStatus = () => {
+      const choice = saved();
+      analytics.checked = choice?.analytics === true;
+      advertising.checked = choice?.advertising === true;
+      status.textContent = choice ? `Votre choix actuel : audience ${choice.analytics ? "autorisée" : "refusée"}, publicité ${choice.advertising ? "autorisée" : "refusée"}.` : "Aucun choix n'a encore été enregistré.";
+    };
+    document.querySelectorAll("[data-cookie-choice]").forEach((button) => {
+      button.addEventListener("click", () => {
+        window.bdSetCookieConsent(button.dataset.cookieChoice);
+        renderStatus();
+      });
+    });
+    document.getElementById("save-cookie-preferences").addEventListener("click", () => {
+      window.bdSetCookieConsent({ analytics: analytics.checked, advertising: advertising.checked });
+      renderStatus();
+    });
+    renderStatus();
+  });
+</script>
+</body>
+</html>
