@@ -1,0 +1,368 @@
+<!--
+  GABARIT DE PAGE — GrowthByDaphné
+  ================================
+  Point de départ pour toute nouvelle page du site. Copie ce fichier,
+  renomme-le, remplis les [PLACEHOLDERS] et le <main>.
+
+  Ce fichier contient uniquement le SOCLE COMMUN à toutes les pages :
+  polices, couleurs, boutons, nav, footer, animation au scroll.
+  Le contenu propre à chaque page (hero, cartes, FAQ...) se construit
+  par-dessus, avec le même système de couleurs/typo/composants.
+
+  Pièges déjà rencontrés sur ce site — évités ici, à ne pas réintroduire :
+  1. Une couleur posée en style="" inline ne peut JAMAIS être
+     surclassée par une règle externe, même avec :hover. Si un lien a
+     besoin d'un survol différent, sa couleur de base doit être dans
+     une vraie classe CSS (voir .nav-links a ci-dessous), jamais inline.
+  2. La règle globale `a { color: var(--plum) }` rend le texte plum
+     invisible sur fond plum/sombre. Tout lien posé sur .nav, .btn--*,
+     .section--plum etc. doit recevoir sa propre couleur explicite.
+  3. Ne jamais mettre `max-width:1080px` sur le MÊME élément qui porte
+     le fond de section (sinon le fond reste boîté au lieu d'être
+     plein cadre). Le fond va sur la section pleine largeur, le
+     max-width + margin:auto va sur un conteneur interne séparé.
+  4. Les polices sont auto-hébergées (assets/fonts/) plutôt que via
+     Google Fonts CDN : le CDN a déjà été bloqué (ERR_BLOCKED_BY_ORB)
+     dans certains environnements. Réutilise ces fichiers existants,
+     ne recrée pas une dépendance externe.
+-->
+<!DOCTYPE html>
+<html lang="fr" class="no-js"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[TITLE]</title>
+<meta name="description" content="[META_DESCRIPTION]">
+<!-- Tant que la page n'est pas publiée, laisse noindex. Repasse en
+     "index, follow" au moment de la mettre en ligne. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://growthbydaphne.com/[SLUG].html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="[OG_TITLE]">
+<meta property="og:description" content="[OG_DESCRIPTION]">
+<meta property="og:url" content="https://growthbydaphne.com/[SLUG].html">
+<meta property="og:site_name" content="Growth by Daphné">
+<!-- Décommenter dès qu'une image 1200×630 est déposée :
+<meta property="og:image" content="assets/img/[OG_IMAGE].jpg">
+<meta name="twitter:card" content="summary_large_image"> -->
+
+<!-- Bannière de consentement cookies — obligatoire sur toute page publique du site -->
+<script src="./consent.js"></script>
+
+<style>/* GrowthByDaphné — socle commun */
+
+/* --- polices auto-hébergées (mêmes fichiers que index.html/offre) --- */
+@font-face {
+  font-family: "Ugly Handwriting";
+  src: url("uploads/my-ugly-handwritting.regular.otf") format("opentype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("assets/fonts/playfair-display.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/playfair-display-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("assets/fonts/dm-sans.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Caveat";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/caveat-400.woff2") format("woff2");
+}
+
+/* --- système de couleurs / typo --- */
+:root {
+  --plum: #3D1D33;
+  --plum-dark: #2C1425;
+  --milk: #FFF3E6;
+  --cream: #FFF9EE;
+  --paper: #FFFCF6;
+  --gold: #E0B84A;
+  --gold-dark: #D0A93C;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Helvetica, Arial, sans-serif;
+  --hand: "Caveat", cursive;
+  --script: "Ugly Handwriting", cursive;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --pad: 60px; /* devient 32px puis 20px sous 960px/640px, voir plus bas */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--milk);
+  color: var(--plum);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+/* Règle globale volontairement plum : tout lien posé sur un fond
+   sombre (nav, section--plum, boutons...) doit recevoir sa propre
+   couleur explicite, sinon il devient illisible (voir piège n°2). */
+a { color: var(--plum); text-decoration: none; }
+a:hover { color: var(--gold-dark); }
+
+img { max-width: 100%; display: block; }
+
+.kicker {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.muted { opacity: 0.7; }
+.gold { color: var(--gold); }
+.filet { width: 80px; height: 3px; background: var(--gold); }
+
+/* --- nav --- */
+.nav {
+  background: var(--plum);
+  color: var(--milk);
+  padding: 18px var(--pad);
+  border-bottom: 1px solid rgba(255, 243, 230, 0.22);
+  /* position: sticky; top: 0; z-index: 20;   <- décommenter pour une nav collante */
+}
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.wordmark { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; color: var(--milk); transition: color 160ms ease; }
+.wordmark:hover { color: var(--gold); }
+.wordmark b { font-family: var(--serif); font-weight: 900; font-size: 18px; letter-spacing: 0.05em; }
+.wordmark span { font-family: var(--script); font-size: 22px; color: var(--gold); }
+
+.nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+/* :not(.btn) est indispensable — sinon ces règles écrasent le style
+   du bouton .btn--gold posé dans la même nav (piège déjà rencontré :
+   bouton devenu tout petit et de la mauvaise couleur). */
+.nav-links a:not(.btn) {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--milk);
+  opacity: 0.78;
+  padding: 8px 6px 6px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 160ms ease, opacity 160ms ease;
+}
+.nav-links a:not(.btn):hover { opacity: 1; color: var(--gold); border-bottom-color: var(--gold); }
+.nav-links a.btn { font-size: 12px; padding: 10px 18px; } /* CTA en nav = version compacte du bouton */
+
+/* --- boutons --- */
+.btn {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 13px 22px;
+  border-radius: 4px;
+  border: 1.5px solid transparent;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.btn--plum { background: var(--plum); color: var(--milk); }
+.btn--plum:hover { background: var(--plum-dark); color: var(--milk); }
+.btn--gold { background: var(--gold); color: var(--plum); } /* action prioritaire */
+.btn--gold:hover { background: var(--gold-dark); color: var(--plum); }
+.btn--outline { border-color: var(--plum); color: var(--plum); } /* action secondaire */
+.btn--outline:hover { background: rgba(61, 29, 51, 0.06); color: var(--plum); }
+.btn--ghost { border-color: rgba(255, 243, 230, 0.5); color: var(--milk); } /* sur fond sombre */
+.btn--ghost:hover { border-color: var(--milk); color: var(--milk); }
+
+/* --- sections : fond plein cadre + contenu recentré (piège n°3) ---
+   La section porte le fond et le padding horizontal ; le conteneur
+   interne (ex. .container) porte le max-width + margin:auto. Ne
+   jamais fusionner les deux sur un seul élément. */
+.section { padding: 60px var(--pad); border-top: 1px solid rgba(61, 29, 51, 0.12); }
+.section--milk { background: var(--milk); }
+.section--cream { background: var(--cream); }
+.section--paper { background: var(--paper); }
+.section--plum { background: var(--plum); color: var(--milk); border-top: 0; }
+
+.container { max-width: 1080px; margin: 0 auto; }
+
+/* --- animation au scroll ---
+   Ajoute class="reveal" à une section/bloc pour qu'il apparaisse en
+   fondu + léger glissement la première fois qu'il entre dans l'écran.
+   Sans JS (ou avec "réduire les animations" actif), tout reste
+   visible immédiatement — pas de flash de contenu invisible. */
+.js .reveal { transition: opacity 700ms cubic-bezier(.22,.61,.36,1), transform 700ms cubic-bezier(.22,.61,.36,1); }
+.js .reveal:not(.is-in) { opacity: 0; transform: translateY(18px); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal, .js .reveal:not(.is-in) { opacity: 1; transform: none; transition: none; }
+}
+
+/* --- footer --- */
+.footer {
+  padding: 22px var(--pad);
+  background: var(--milk);
+  color: var(--plum);
+  border-top: 1px solid rgba(61, 29, 51, 0.14);
+}
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-links {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* --- responsive : 3 paliers, cohérents avec le reste du site --- */
+@media (max-width: 1080px) {
+  /* décors/doodles éventuels à masquer ici */
+}
+@media (max-width: 960px) {
+  :root { --pad: 32px; }
+  .nav-links a:not(.btn) { display: none; } /* ne garder que le CTA en mobile */
+}
+@media (max-width: 640px) {
+  :root { --pad: 20px; }
+  body { font-size: 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="wordmark" href="/" aria-label="GrowthByDaphné, accueil">
+      <b>GROWTH</b><span>by Daphné.</span>
+    </a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="/">Accueil</a>
+      <a href="/kit-mandataire.html">Le Kit</a>
+      <!-- <a class="btn btn--gold js-booking" href="#reserver">Réserver 30 min offertes</a> -->
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Exemple de section : à dupliquer/adapter pour chaque bloc de contenu.
+       Le fond (.section--milk/--cream/--paper/--plum) est plein cadre,
+       .container recentre le contenu à 1080px. -->
+  <section class="section section--milk reveal">
+    <div class="container">
+      <div class="kicker muted">Kicker de section</div>
+      <h2 style="font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,38px);margin:12px 0">Titre de la section</h2>
+      <p style="font-size:16px;line-height:1.7;max-width:64ch;opacity:0.85">Contenu de la page à écrire ici.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="/" style="display:flex;align-items:baseline;gap:6px;color:var(--plum)">
+      <span style="font-family:var(--serif);font-weight:900;font-size:14px;letter-spacing:0.05em">GROWTH</span>
+      <span style="font-family:var(--script);font-size:18px;color:var(--gold)">by Daphné.</span>
+      <span class="footer-links" style="margin-left:8px">· Alpes</span>
+    </a>
+    <span class="footer-links">
+      <a href="/mentions-legales.html" target="_blank" rel="noopener" aria-label="Mentions légales (s'ouvre dans un nouvel onglet)" style="color:var(--plum)">Mentions légales <span aria-hidden="true">↗</span></a> ·
+      <a href="/cgv.html" target="_blank" rel="noopener" aria-label="CGV (s'ouvre dans un nouvel onglet)" style="color:var(--plum)">CGV <span aria-hidden="true">↗</span></a> ·
+      <a href="/confidentialite.html" target="_blank" rel="noopener" aria-label="Confidentialité (s'ouvre dans un nouvel onglet)" style="color:var(--plum)">Confidentialité <span aria-hidden="true">↗</span></a> ·
+      <a href="/gestiondescookies.html" target="_blank" rel="noopener" aria-label="Cookies (s'ouvre dans un nouvel onglet)" style="color:var(--plum)">Cookies <span aria-hidden="true">↗</span></a>
+    </span>
+  </div>
+</footer>
+
+<script>
+/* GrowthByDaphné — socle commun */
+
+/* ------------------------------------------------------------------
+   LIEN DE RÉSERVATION
+   Colle ici l'URL de l'agenda (Cal.com, Calendly, Tally, ou "mailto:").
+   Tous les éléments .js-booking pointeront dessus automatiquement.
+   Laisse vide pour qu'ils continuent à pointer vers leur href d'origine.
+------------------------------------------------------------------ */
+var BOOKING_URL = "";
+
+(function () {
+  var root = document.documentElement;
+  root.classList.remove("no-js");
+  root.classList.add("js");
+
+  if (BOOKING_URL) {
+    var links = document.querySelectorAll(".js-booking");
+    for (var i = 0; i < links.length; i++) {
+      links[i].setAttribute("href", BOOKING_URL);
+      if (/^https?:/.test(BOOKING_URL)) {
+        links[i].setAttribute("target", "_blank");
+        links[i].setAttribute("rel", "noopener");
+      }
+    }
+  }
+
+  var reveals = document.querySelectorAll(".reveal");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function forceVisible(el) {
+    el.classList.add("is-in");
+    el.style.transition = "none";
+    el.style.opacity = "1";
+    el.style.transform = "none";
+  }
+
+  if (reduce || typeof IntersectionObserver !== "function") {
+    for (var j = 0; j < reveals.length; j++) forceVisible(reveals[j]);
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add("is-in");
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  for (var k = 0; k < reveals.length; k++) io.observe(reveals[k]);
+
+  // filet de sécurité : rien ne doit rester invisible si la transition ne démarre pas
+  setTimeout(function () {
+    for (var m = 0; m < reveals.length; m++) forceVisible(reveals[m]);
+  }, 2500);
+})();
+</script>
+
+</body>
+</html>

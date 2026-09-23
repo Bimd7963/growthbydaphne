@@ -31,19 +31,38 @@
   body { margin: 0; background: #FFF3E6; font-family: 'DM Sans', sans-serif; }
   a { color: #3D1D33; text-decoration: none; }
   a:hover { color: #E0B84A; }
+  .wordmark { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; color: #FFF3E6; transition: color 160ms ease; }
+  .wordmark:hover { color: #E0B84A; }
+  .wordmark b { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 18px; letter-spacing: 0.05em; }
+  .wordmark span { font-family: 'Signature', 'Ms Madi', cursive; font-size: 22px; color: #E0B84A; }
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #FFF3E6;
+    opacity: 0.78;
+    padding: 8px 6px 6px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 160ms ease, opacity 160ms ease;
+  }
+  .nav-links a:hover { opacity: 1; color: #E0B84A; border-bottom-color: #E0B84A; }
   .payhip-buy-button { display:block; box-sizing:border-box; width:100%; text-align:center; background:#E0B84A; color:#3D1D33; font-size:16px; font-weight:500; letter-spacing:0.03em; padding:18px 24px; border-radius:4px; }
   .payhip-buy-button:hover, .payhip-buy-button:focus { background:#D0A93C; color:#3D1D33; }
 </style>
 </helmet>
 
-<nav aria-label="Navigation principale" style="background:#3D1D33;color:#FFF3E6;padding:16px clamp(20px,5vw,60px);font-size:12px">
-  <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(255,243,230,0.22);padding-bottom:14px">
-    <a href="/" style="font-family:'Playfair Display',serif;font-weight:900;letter-spacing:0.05em;color:#FFF3E6">GROWTH <span style="font-family:'Signature','Ms Madi',cursive;color:#E0B84A;font-size:19px;font-weight:400;letter-spacing:0">by Daphné.</span></a>
-    <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:center;letter-spacing:0.12em;text-transform:uppercase">
-      <a href="/#approche" style="color:#FFF3E6;opacity:0.78">L'approche</a>
-      <a href="#contenu" style="color:#FFF3E6;opacity:0.78">Le kit</a>
-      <a href="#qui-suis-je" style="color:#FFF3E6;opacity:0.78">À propos</a>
-      <a href="#questions" style="color:#FFF3E6;opacity:0.78">Questions</a>
+<nav aria-label="Navigation principale" style="background:#3D1D33;color:#FFF3E6;padding:18px clamp(20px,5vw,60px);border-bottom:1px solid rgba(255,243,230,0.22)">
+  <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="/" class="wordmark">
+      <b>GROWTH</b><span>by Daphné.</span>
+    </a>
+    <div class="nav-links" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+      <a href="/#approche">L'approche</a>
+      <a href="#contenu">Le kit</a>
+      <a href="#qui-suis-je">À propos</a>
+      <a href="#questions">Questions</a>
     </div>
   </div>
 </nav>
@@ -377,7 +396,7 @@
       <span style="font-family:'Signature','Ms Madi',cursive;font-size:18px;color:#E0B84A">by Daphné.</span>
       <span style="font-size:10px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;opacity:0.6;margin-left:8px">· Alpes</span>
     </div>
-    <span style="font-size:10px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;opacity:0.6"><a href="/" target="_blank" rel="noopener" aria-label="Accueil (s'ouvre dans un nouvel onglet)">Accueil <span aria-hidden="true">↗</span></a> · <a href="/mentions-legales.html" target="_blank" rel="noopener" aria-label="Mentions légales (s'ouvre dans un nouvel onglet)">Mentions légales <span aria-hidden="true">↗</span></a> · <a href="/cgv.html" target="_blank" rel="noopener" aria-label="CGV (s'ouvre dans un nouvel onglet)">CGV <span aria-hidden="true">↗</span></a> · <a href="/confidentialite.html" target="_blank" rel="noopener" aria-label="Confidentialité (s'ouvre dans un nouvel onglet)">Confidentialité <span aria-hidden="true">↗</span></a> · <a href="/gestiondescookies.html" target="_blank" rel="noopener" aria-label="Cookies (s'ouvre dans un nouvel onglet)">Cookies <span aria-hidden="true">↗</span></a></span>
+    <span style="font-size:10px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;opacity:0.6"><a href="/mentions-legales.html" target="_blank" rel="noopener" aria-label="Mentions légales (s'ouvre dans un nouvel onglet)">Mentions légales <span aria-hidden="true">↗</span></a> · <a href="/cgv.html" target="_blank" rel="noopener" aria-label="CGV (s'ouvre dans un nouvel onglet)">CGV <span aria-hidden="true">↗</span></a> · <a href="/confidentialite.html" target="_blank" rel="noopener" aria-label="Confidentialité (s'ouvre dans un nouvel onglet)">Confidentialité <span aria-hidden="true">↗</span></a> · <a href="/gestiondescookies.html" target="_blank" rel="noopener" aria-label="Cookies (s'ouvre dans un nouvel onglet)">Cookies <span aria-hidden="true">↗</span></a></span>
   </div>
 </footer>
 
