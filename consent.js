@@ -158,15 +158,15 @@
   function addStyles() {
     const style = document.createElement("style");
     style.textContent = `
-      #bd-cookie-overlay{position:fixed;z-index:2147483645;inset:0;background:rgba(61,29,51,.45)}
-      #bd-cookie-banner{position:fixed;z-index:2147483646;right:0;bottom:0;left:0;padding:24px 20px;background:#FFF9EE;color:#3D1D33;box-shadow:0 -4px 30px rgba(61,29,51,.25);font:14px/1.55 'DM Sans',sans-serif}
-      #bd-cookie-main{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:960px;margin:0 auto}
-      #bd-cookie-custom{max-width:960px;margin:0 auto}
+      #bd-cookie-overlay{position:fixed;z-index:2147483645;inset:0;background:rgba(61,29,51,.55)}
+      #bd-cookie-banner{position:fixed;z-index:2147483646;top:50%;left:50%;transform:translate(-50%,-50%);width:calc(100% - 32px);max-width:720px;padding:28px 24px;border-radius:8px;background:#FFF9EE;color:#3D1D33;box-shadow:0 16px 50px rgba(61,29,51,.3);font:14px/1.55 'DM Sans',sans-serif}
+      #bd-cookie-main{max-width:100%}
+      #bd-cookie-custom{max-width:100%}
       #bd-cookie-custom[hidden]{display:none}
       #bd-cookie-banner strong{font-family:'Playfair Display',serif;font-size:18px;font-weight:400}
       #bd-cookie-banner p{max-width:660px;margin:5px 0 4px}
       #bd-cookie-banner a{color:#3D1D33;text-decoration:underline;text-underline-offset:2px}
-      .bd-cookie-actions{display:flex;flex:none;gap:10px}
+      .bd-cookie-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
       .bd-cookie-actions button{padding:10px 14px;border:1px solid #3D1D33;border-radius:4px;background:transparent;color:#3D1D33;font:500 13px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
       .bd-cookie-actions .bd-cookie-accept{border-color:#E0B84A;background:#E0B84A}
       .bd-cookie-purposes{display:flex;gap:12px;margin:14px 0}
@@ -178,8 +178,8 @@
       .bd-toggle::after{content:'';position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s}
       .bd-cookie-purpose input:checked+.bd-toggle{background:#E0B84A}
       .bd-cookie-purpose input:checked+.bd-toggle::after{transform:translateX(20px)}
-      #bd-cookie-custom .bd-cookie-actions{justify-content:flex-end;margin-top:14px}
-      @media(max-width:700px){#bd-cookie-main{display:block}#bd-cookie-main .bd-cookie-actions{margin-top:14px}.bd-cookie-purposes{flex-direction:column}}
+      #bd-cookie-custom .bd-cookie-actions{justify-content:flex-end}
+      @media(max-width:700px){.bd-cookie-purposes{flex-direction:column}}
     `;
     document.head.appendChild(style);
   }
