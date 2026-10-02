@@ -41,7 +41,7 @@
   main { max-width:1080px; margin:0 auto; padding:0 clamp(20px,5vw,60px); }
   .canva-wrap { max-width:600px; margin:clamp(40px,8vw,64px) auto clamp(40px,6vw,56px); }
   .form-section { padding-bottom:clamp(56px,9vw,88px); }
-  .form-card { max-width:640px; margin:0 auto; background:var(--paper); border:1px solid rgba(61,29,51,.12); border-radius:8px; padding:clamp(24px,4vw,36px); }
+  .form-card { max-width:640px; margin:0 auto; background:#fff; border:1px solid rgba(61,29,51,.12); border-radius:8px; padding:clamp(24px,4vw,36px); }
   .form-card h2 { margin:0 0 10px; font-family:'Playfair Display',serif; font-size:clamp(22px,3vw,28px); font-weight:400; line-height:1.25; }
   .form-card p.form-text { margin:0 0 24px; font-size:15.5px; line-height:1.7; opacity:.82; }
   .form-embed { display:flex; justify-content:center; }
@@ -127,8 +127,6 @@
 
   <section class="form-section">
     <div class="form-card">
-      <h2>Vous voulez la suite ?</h2>
-      <p class="form-text">Six emails sur dix jours. Nos vrais chiffres, nos ratés, et comment les contacts ont fini par venir à nous. Si ça ne vous sert pas, un clic et on n'en parle plus.</p>
       <div class="form-embed">
         <div class="sib-form" style="text-align: center; background-color: transparent;">
           <div id="sib-form-container" class="sib-form-container">
@@ -150,8 +148,22 @@
               </div>
             </div>
             <div></div>
-            <div id="sib-container" class="sib-container--large sib-container--vertical" style="max-width:540px; text-align:center; background-color:rgba(255,255,255,1); border-width:1px; border-style:solid; border-color:#C0CCD9; border-radius:3px; direction:ltr">
+            <div id="sib-container" class="sib-container--large sib-container--vertical" style="max-width:540px; text-align:center; background-color:rgba(255,255,255,1); border:none; direction:ltr">
               <form id="sib-form" method="POST" action="https://25a8588d.sibforms.com/serve/MUIFAENBEmo29awx9sefeIIg9E0O6_QvJIktjj0e80spfSGgRRrBgQNVB-Pc9s5xn2w9AJeJO3Y98k8OQTaJC-cXiOcagx3euUibK7-UQI0I0Eh1qNwLyX9ID08Lj-jDJdcdVCzsoomJFjeD8WNWocAHImm7n97NXIqsMuNle4szgOg0DJsUmudOVL3RviqYXygu7y8BMeZP51llcg==" data-type="subscription">
+                <div style="padding: 8px 0;">
+                  <div class="sib-form-block" style="text-align:left;">
+                    <div class="sib-text-form-block">
+                      <p style="font-family:'Playfair Display',serif; font-size:clamp(22px,3vw,28px); font-weight:400; line-height:1.25; margin:0;">Vous voulez la suite ?</p>
+                    </div>
+                  </div>
+                </div>
+                <div style="padding: 4px 0 12px;">
+                  <div class="sib-form-block" style="text-align:left;">
+                    <div class="sib-text-form-block">
+                      <p style="font-family:'DM Sans',Helvetica,sans-serif; font-size:15.5px; line-height:1.7; color:#3C4858; opacity:.82; margin:0;">Six emails sur dix jours. Nos vrais chiffres, nos ratés, et comment les contacts ont fini par venir à nous. Si ça ne vous sert pas, un clic et on n'en parle plus.</p>
+                    </div>
+                  </div>
+                </div>
                 <div style="padding: 8px 0;">
                   <div class="sib-input sib-form-block">
                     <div class="form__entry entry_block">
@@ -241,17 +253,31 @@
                     </div>
                   </div>
                 </div>
+                <input type="hidden" name="OPT_IN" value="1" />
                 <div style="padding: 8px 0;">
-                  <div class="sib-form-block" style="font-family:Helvetica, sans-serif; font-size:14px; text-align:left; color:#3C4858; background-color:transparent; text-align:left">
+                  <div class="sib-form-block" style="font-family:Helvetica, sans-serif; font-size:14px; text-align:left; color:#3C4858; background-color:transparent;">
                     <div class="sib-text-form-block">
-                      <p>J&#39;accepte de recevoir vos e-mails et confirme avoir pris connaissance de votre <a target="_blank" href="https://growthbydaphne.com/confidentialite.html" rel="nofollow noopener">politique de confidentialité</a>.</p>
+                      <p>Vos données sont traitées par Growth by Daphné. <a href="https://growthbydaphne.com/confidentialite.html" rel="nofollow">Politique de confidentialité</a>.</p>
                     </div>
                   </div>
                 </div>
                 <div style="padding: 8px 0;">
-                  <div class="sib-form-block" style="font-family:Helvetica, sans-serif; font-size:13px; font-style:italic; text-align:left; color:#636a72; background-color:transparent; text-align:left">
-                    <div class="sib-text-form-block">
-                      <p>Vous pouvez vous désinscrire à tout moment en cliquant sur le lien présent dans nos emails.</p>
+                  <div class="sib-form-block sib-divider-form-block">
+                    <div style="border: 0; border-bottom: 1px solid #E5EDF6"></div>
+                  </div>
+                </div>
+                <div style="padding: 8px 0;">
+                  <div class="sib-optin sib-form-block">
+                    <div class="form__entry entry_mcq">
+                      <div class="form__label-row ">
+                        <div class="entry__choice" style="">
+                          <label>
+                            <input type="checkbox" class="input_replaced" value="1" id="_PIXEL_TRACKING_CONSENT" name="_PIXEL_TRACKING_CONSENT" />
+                            <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-family:Helvetica, sans-serif; font-size:14px; text-align:left; color:#3C4858; background-color:transparent;"><p>J&#39;accepte que mes ouvertures et mes clics soient mesurés : ça vous aide à savoir ce qui m&#39;intéresse vraiment.</p></span>
+                          </label>
+                        </div>
+                      </div>
+                      <label class="entry__error entry__error--primary" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"></label>
                     </div>
                   </div>
                 </div>
@@ -263,6 +289,13 @@
                       </svg>
                       Recevoir la suite !
                     </button>
+                  </div>
+                </div>
+                <div style="padding: 8px 0;">
+                  <div class="sib-form-block" style="font-family:Helvetica, sans-serif; font-size:13px; font-style:italic; text-align:left; color:#636a72; background-color:transparent;">
+                    <div class="sib-text-form-block">
+                      <p>Vous pouvez vous désinscrire ou retirer votre accord au suivi à tout moment en un clic.</p>
+                    </div>
                   </div>
                 </div>
                 <input type="text" name="email_address_check" value="" class="input--hidden">
