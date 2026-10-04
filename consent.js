@@ -101,7 +101,7 @@
           <label class="bd-cookie-purpose">
             <div>
               <strong>Mesure d’audience</strong>
-              <span>Google Analytics — comprendre comment les visiteurs utilisent le site</span>
+              <span>Google Analytics et Microsoft Clarity — comprendre comment les visiteurs utilisent le site, et enregistrer le parcours de navigation (clics, scroll) pour repérer ce qui bloque. Sans vous identifier, et sans enregistrer ce que vous tapez.</span>
             </div>
             <input type="checkbox" id="bd-toggle-analytics">
             <span class="bd-toggle"></span>
