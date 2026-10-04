@@ -2,6 +2,20 @@
   "use strict";
 
   const CONSENT_KEY = "bd_cookie_consent";
+  const UID_KEY = "bd_consent_uid";
+  const POLICY_VERSION = "v2";
+  const SITE = "growthbydaphne";
+  const CONSENT_MAX_AGE_DAYS = 183;
+  const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfsKxAIPLCjMhmV50vRE5e0aCAWU9rDr3J7ZA3HJuQ8l5oxYg/formResponse";
+  const FORM_FIELDS = {
+    uid:       "entry.961622031",
+    decision:  "entry.109364102",
+    analytics: "entry.141650209",
+    ads:       "entry.182416439",
+    page:      "entry.100032831",
+    version:   "entry.181332719",
+    site:      "entry.1268469245",
+  };
   const GTM_ID = "GTM-MGVGJ6DS";
   const dataLayer = (window.dataLayer = window.dataLayer || []);
 
@@ -19,6 +33,44 @@
       };
     }
     return null;
+  }
+
+  function getConsentUid() {
+    try {
+      let uid = localStorage.getItem(UID_KEY);
+      if (!uid) {
+        uid = typeof crypto !== "undefined" && crypto.randomUUID
+          ? crypto.randomUUID()
+          : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
+              const r = (Math.random() * 16) | 0;
+              return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
+            });
+        localStorage.setItem(UID_KEY, uid);
+      }
+      return uid;
+    } catch (_) {
+      return "unavailable";
+    }
+  }
+
+  function logToSheet(preferences, decision) {
+    try {
+      const params = new URLSearchParams();
+      params.append(FORM_FIELDS.uid, encodeURIComponent(getConsentUid()));
+      params.append(FORM_FIELDS.decision, encodeURIComponent(decision));
+      params.append(FORM_FIELDS.analytics, encodeURIComponent(preferences.analytics ? "Oui" : "Non"));
+      params.append(FORM_FIELDS.ads, encodeURIComponent(preferences.advertising ? "Oui" : "Non"));
+      params.append(FORM_FIELDS.page, encodeURIComponent(window.location.pathname));
+      params.append(FORM_FIELDS.version, encodeURIComponent(POLICY_VERSION));
+      params.append(FORM_FIELDS.site, encodeURIComponent(SITE));
+      fetch(FORM_ACTION, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(),
+      }).catch(() => {});
+    } catch (_) {}
   }
 
   function updateConsent(choice) {
@@ -57,8 +109,18 @@
   function applyConsent(choice) {
     const preferences = normaliseChoice(choice);
     if (!preferences) return;
-    localStorage.setItem(CONSENT_KEY, JSON.stringify(preferences));
+    const record = {
+      analytics: preferences.analytics,
+      advertising: preferences.advertising,
+      ts: Date.now(),
+      version: POLICY_VERSION,
+    };
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(record));
     updateConsent(preferences);
+    const decision = choice === "accepted" ? "accept_all"
+      : choice === "refused" ? "refuse_all"
+      : "custom";
+    logToSheet(preferences, decision);
   }
 
   window.bdSetCookieConsent = applyConsent;
@@ -148,8 +210,9 @@
     document.querySelectorAll("[data-bd-cookie-manage]").forEach((link) => {
       link.addEventListener("click", (event) => {
         event.preventDefault();
+        logToSheet({ analytics: false, advertising: false }, "withdraw");
         localStorage.removeItem(CONSENT_KEY);
-        updateConsent(false);
+        updateConsent({ analytics: false, advertising: false });
         window.location.reload();
       });
     });
@@ -195,10 +258,20 @@
   try {
     const rawChoice = localStorage.getItem(CONSENT_KEY);
     if (rawChoice === "accepted" || rawChoice === "refused") {
-      savedChoice = normaliseChoice(rawChoice);
-      localStorage.setItem(CONSENT_KEY, JSON.stringify(savedChoice));
+      localStorage.removeItem(CONSENT_KEY);
+      savedChoice = null;
     } else if (rawChoice) {
-      savedChoice = normaliseChoice(JSON.parse(rawChoice));
+      const stored = JSON.parse(rawChoice);
+      const expired =
+        typeof stored.ts !== "number" ||
+        Date.now() - stored.ts > CONSENT_MAX_AGE_DAYS * 24 * 60 * 60 * 1000 ||
+        stored.version !== POLICY_VERSION;
+      if (expired) {
+        localStorage.removeItem(CONSENT_KEY);
+        savedChoice = null;
+      } else {
+        savedChoice = normaliseChoice(stored);
+      }
     }
   } catch (error) {
     savedChoice = null;
