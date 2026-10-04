@@ -206,18 +206,6 @@
     });
   }
 
-  function bindManageLinks() {
-    document.querySelectorAll("[data-bd-cookie-manage]").forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        logToSheet({ analytics: false, advertising: false }, "withdraw");
-        localStorage.removeItem(CONSENT_KEY);
-        updateConsent({ analytics: false, advertising: false });
-        window.location.reload();
-      });
-    });
-  }
-
   function addStyles() {
     const style = document.createElement("style");
     style.textContent = `
@@ -290,6 +278,5 @@
       !savedChoice
     )
       createBanner();
-    bindManageLinks();
   });
 })();
