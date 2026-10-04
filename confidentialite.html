@@ -67,6 +67,28 @@
 
 <main class="legal-wrap">
 
+<!--
+  AVANT DE MODIFIER CES TEXTES
+
+  Si le changement est SUBSTANTIEL, incrémente POLICY_VERSION dans consent.js
+  (actuellement "v2"). Cela fait expirer les consentements en cours : le bandeau
+  réapparaît et chaque visiteur retranche en connaissance de cause.
+
+  Substantiel = ce à quoi la personne a consenti change :
+    - ajout ou retrait d'un traceur ou d'un sous-traitant
+    - nouvelle finalité, ou finalité élargie
+    - changement de durée de conservation
+    - modification du périmètre d'une catégorie de consentement
+
+  NON substantiel, ne pas incrémenter :
+    - faute d'orthographe, reformulation, mise en page
+    - mise à jour de la date de dernière modification
+    - changement de style ou de structure HTML
+
+  En cas de doute : incrémenter. Resolliciter à tort coûte un clic au visiteur,
+  ne pas resolliciter quand il le fallait invalide les consentements collectés.
+-->
+
   <article class="legal-article">
     <h2><span class="legal-number">01</span>Responsable du traitement</h2>
     <ul>

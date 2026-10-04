@@ -95,6 +95,28 @@
       <p>Un cookie est un petit fichier déposé sur votre appareil lors de votre visite. Certains sont nécessaires au fonctionnement du site. D'autres, optionnels, servent à mesurer l'audience ou l'efficacité de nos campagnes et nécessitent votre accord préalable.</p>
     </section>
 
+    <!--
+      AVANT DE MODIFIER CES TEXTES
+
+      Si le changement est SUBSTANTIEL, incrémente POLICY_VERSION dans consent.js
+      (actuellement "v2"). Cela fait expirer les consentements en cours : le bandeau
+      réapparaît et chaque visiteur retranche en connaissance de cause.
+
+      Substantiel = ce à quoi la personne a consenti change :
+        - ajout ou retrait d'un traceur ou d'un sous-traitant
+        - nouvelle finalité, ou finalité élargie
+        - changement de durée de conservation
+        - modification du périmètre d'une catégorie de consentement
+
+      NON substantiel, ne pas incrémenter :
+        - faute d'orthographe, reformulation, mise en page
+        - mise à jour de la date de dernière modification
+        - changement de style ou de structure HTML
+
+      En cas de doute : incrémenter. Resolliciter à tort coûte un clic au visiteur,
+      ne pas resolliciter quand il le fallait invalide les consentements collectés.
+    -->
+
     <section class="section">
       <div class="section-label">02 — Vos préférences</div>
       <h2>Vous gardez le contrôle.</h2>
