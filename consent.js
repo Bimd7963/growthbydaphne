@@ -56,13 +56,13 @@
   function logToSheet(preferences, decision) {
     try {
       const params = new URLSearchParams();
-      params.append(FORM_FIELDS.uid, encodeURIComponent(getConsentUid()));
-      params.append(FORM_FIELDS.decision, encodeURIComponent(decision));
-      params.append(FORM_FIELDS.analytics, encodeURIComponent(preferences.analytics ? "Oui" : "Non"));
-      params.append(FORM_FIELDS.ads, encodeURIComponent(preferences.advertising ? "Oui" : "Non"));
-      params.append(FORM_FIELDS.page, encodeURIComponent(window.location.pathname));
-      params.append(FORM_FIELDS.version, encodeURIComponent(POLICY_VERSION));
-      params.append(FORM_FIELDS.site, encodeURIComponent(SITE));
+      params.append(FORM_FIELDS.uid, getConsentUid());
+      params.append(FORM_FIELDS.decision, decision);
+      params.append(FORM_FIELDS.analytics, preferences.analytics ? "Oui" : "Non");
+      params.append(FORM_FIELDS.ads, preferences.advertising ? "Oui" : "Non");
+      params.append(FORM_FIELDS.page, window.location.pathname);
+      params.append(FORM_FIELDS.version, POLICY_VERSION);
+      params.append(FORM_FIELDS.site, SITE);
       fetch(FORM_ACTION, {
         method: "POST",
         mode: "no-cors",
