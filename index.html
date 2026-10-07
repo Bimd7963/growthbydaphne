@@ -130,7 +130,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -141,6 +141,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-wrap: pretty;
+  overflow-x: hidden;
 }
 
 a { color: var(--plum); text-decoration: none; }
