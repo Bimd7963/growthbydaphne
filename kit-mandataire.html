@@ -62,6 +62,11 @@
   .payhip-buy-button { display:block; box-sizing:border-box; width:100%; text-align:center; background:#E0B84A; color:#3D1D33; font-size:16px; font-weight:500; letter-spacing:0.03em; padding:18px 24px; border-radius:4px; }
   .payhip-buy-button:hover, .payhip-buy-button:focus { background:#D0A93C; color:#3D1D33; }
   .nav-links .payhip-buy-button { display:inline-block; width:auto; padding:10px 18px; font-size:12px; }
+  .faq-list summary { list-style: none; }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary:hover { opacity: 0.7; }
+  .faq-list .faq-sign::before { content: "+"; }
+  .faq-list details[open] .faq-sign::before { content: "\2013"; }
 </style>
 </helmet>
 
@@ -309,6 +314,60 @@
   <div style="max-width:1080px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:18px;margin-bottom:34px">
       <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:34px;line-height:1">06</span>
+      <span style="font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;opacity:0.7">Pour qui</span>
+      <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:16px;opacity:0.7;flex:1 1 240px">Pour qui c'est fait, et pour qui ça ne l'est pas.</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <div style="flex:1 1 320px;min-width:0;background:#3D1D33;color:#FFF3E6;border-radius:6px;padding:28px 26px;display:flex;flex-direction:column;gap:15px">
+        <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:22px;line-height:1.3;margin:0">C'est pour vous si…</h3>
+        <div style="display:flex;gap:13px">
+          <span style="flex:none;font-size:17px;color:#E0B84A;line-height:1.55;width:16px">✓</span>
+          <p style="font-size:15px;line-height:1.6;margin:0;opacity:0.9">Vous n'avez jamais lancé de campagne, ou ça vous fatigue d'avance. Si vous avez un profil Facebook et savez ouvrir un Google Sheet, ça suffit.</p>
+        </div>
+        <div style="display:flex;gap:13px">
+          <span style="flex:none;font-size:17px;color:#E0B84A;line-height:1.55;width:16px">✓</span>
+          <p style="font-size:15px;line-height:1.6;margin:0;opacity:0.9">Vous voulez un chemin tout tracé, sans mettre les mains dans le cambouis.</p>
+        </div>
+        <div style="display:flex;gap:13px">
+          <span style="flex:none;font-size:17px;color:#E0B84A;line-height:1.55;width:16px">✓</span>
+          <p style="font-size:15px;line-height:1.6;margin:0;opacity:0.9">Vous en avez ras le bol de boîter ou de faire du porte-à-porte.</p>
+        </div>
+        <div style="display:flex;gap:13px">
+          <span style="flex:none;font-size:17px;color:#E0B84A;line-height:1.55;width:16px">✓</span>
+          <p style="font-size:15px;line-height:1.6;margin:0;opacity:0.9">Vous acceptez 5 € par jour de pub et vous avez le temps de rappeler vos contacts.</p>
+        </div>
+      </div>
+      <div style="flex:1 1 320px;min-width:0;background:#FFF9EE;border:1px solid rgba(61,29,51,0.16);border-radius:6px;padding:28px 26px;display:flex;flex-direction:column;gap:15px">
+        <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:22px;line-height:1.3;margin:0">Ce n'est pas pour vous si…</h3>
+        <div style="display:flex;gap:13px">
+          <span style="flex:none;font-size:16px;color:rgba(61,29,51,0.55);line-height:1.6;width:16px">✗</span>
+          <p style="font-size:15px;line-height:1.6;margin:0;opacity:0.82">Vous lancez déjà vos pubs et vos automatisations. Vous le trouverez élémentaire, et vous aurez raison.</p>
+        </div>
+        <div style="display:flex;gap:13px">
+          <span style="flex:none;font-size:16px;color:rgba(61,29,51,0.55);line-height:1.6;width:16px">✗</span>
+          <p style="font-size:15px;line-height:1.6;margin:0;opacity:0.82">Vous voulez que quelqu'un le fasse à votre place. C'est un autre service : <a href="[LIEN_A_COMPLETER]" style="text-decoration:underline">écrivez-moi</a>.</p>
+        </div>
+        <div style="display:flex;gap:13px">
+          <span style="flex:none;font-size:16px;color:rgba(61,29,51,0.55);line-height:1.6;width:16px">✗</span>
+          <p style="font-size:15px;line-height:1.6;margin:0;opacity:0.82">Vous n'avez pas de budget pub. Comptez 5 € par jour minimum, versés directement à Meta. Pas de bras, pas de chocolat.</p>
+        </div>
+        <div style="display:flex;gap:13px">
+          <span style="flex:none;font-size:16px;color:rgba(61,29,51,0.55);line-height:1.6;width:16px">✗</span>
+          <p style="font-size:15px;line-height:1.6;margin:0;opacity:0.82">Vous n'avez pas le temps de rappeler vos contacts. Le système amène des vendeurs, il n'ira pas aux rendez-vous à votre place.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:26px;border-top:1px solid rgba(61,29,51,0.14);display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,44px)">
+      <p style="flex:1 1 340px;font-size:15px;line-height:1.7;margin:0;opacity:0.82">Si je l'ai fait simple, c'est voulu. Un mandataire seul n'aura jamais le volume qui justifie une usine à gaz avec des segmentations et des automatisations d'horlogerie suisse. Le kit est calibré pour ce volume-là.</p>
+      <p style="flex:1 1 220px;font-size:15px;line-height:1.7;margin:0;opacity:0.82">Support par email, réponse sous 48 h ouvrées. Pas de hotline, pas de groupe Facebook.</p>
+    </div>
+  </div>
+</section>
+
+<section data-reveal="1" style="background:#FFF3E6;color:#3D1D33;border-top:1px solid rgba(61,29,51,0.12);padding:clamp(40px,6vw,64px) clamp(20px,5vw,60px)">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:18px;margin-bottom:34px">
+      <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:34px;line-height:1">07</span>
       <span style="font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;opacity:0.7">L'offre</span>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start">
@@ -319,7 +378,8 @@
           <span style="font-family:'Playfair Display',serif;font-size:26px;opacity:0.5;text-decoration:line-through">347 €</span>
           <span style="font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,50px);line-height:1;color:#E0B84A">247 €</span>
         </div>
-        <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.65;margin:10px 0 22px">Paiement unique</div>
+        <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.65;margin:10px 0 8px">Paiement unique</div>
+        <div style="font-size:12.5px;line-height:1.5;opacity:0.6;margin:0 0 22px">Budget pub en plus : comptez 5 € par jour, versés directement à Meta.</div>
         <div style="display:flex;flex-direction:column;gap:9px;font-size:14.5px;line-height:1.6;margin-bottom:20px">
           <span>· Campagne Meta Ads complète</span>
           <span>· Ma meilleure pub + template Canva éditable</span>
@@ -343,29 +403,6 @@
   </div>
 </section>
 
-<section data-reveal="1" style="background:#FFF9EE;color:#3D1D33;padding:clamp(40px,6vw,64px) clamp(20px,5vw,60px);border-top:1px solid rgba(61,29,51,0.12)">
-  <div style="max-width:1080px;margin:0 auto">
-    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:18px;margin-bottom:32px">
-      <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:34px;line-height:1">07</span>
-      <span style="font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;opacity:0.7">Ce qu'il faut savoir</span>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,44px)">
-      <div style="flex:1 1 260px">
-        <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:22px;line-height:1.3;margin:0 0 10px">Pas besoin de compétence technique.</h3>
-        <p style="font-size:15px;line-height:1.7;margin:0;opacity:0.82">Si vous savez poster sur Facebook et ouvrir un Google Sheet, vous savez installer ce kit. Chaque étape est documentée capture par capture.</p>
-      </div>
-      <div style="flex:1 1 260px">
-        <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:22px;line-height:1.3;margin:0 0 10px">Ce n'est pas une formation.</h3>
-        <p style="font-size:15px;line-height:1.7;margin:0;opacity:0.82">Pas de vidéo de 6 heures, pas de module à « débloquer ». Vous recevez les fichiers, vous suivez le guide, votre système est en place.</p>
-      </div>
-      <div style="flex:1 1 260px">
-        <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:22px;line-height:1.3;margin:0 0 10px">Support inclus, cadré.</h3>
-        <p style="font-size:15px;line-height:1.7;margin:0;opacity:0.82">Une question ? Email, réponse sous 48 h ouvrées. Pas de hotline, pas de groupe Facebook : un canal clair, des réponses utiles.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="questions" data-reveal="1" style="background:#FFF3E6;color:#3D1D33;padding:clamp(40px,6vw,64px) clamp(20px,5vw,60px);border-top:1px solid rgba(61,29,51,0.12)">
   <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,56px);align-items:flex-start">
     <div style="flex:0 1 260px">
@@ -373,18 +410,49 @@
       <div style="font-size:11px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;opacity:0.7;margin-bottom:20px">Questions</div>
       <div style="transform:rotate(2deg);background:#FFF9EE;border:1px solid rgba(61,29,51,0.1);box-shadow:0 1px 6px rgba(61,29,51,0.14);padding:13px 15px;font-family:'Caveat',cursive;font-size:19px;line-height:1.35;max-width:220px">si la vôtre n'y est pas, écrivez-moi. Je réponds même quand c'est non.</div>
     </div>
-    <div style="flex:1 1 420px;min-width:0">
-      <sc-for list="{{ faq }}" as="item" hint-placeholder-count="6">
-        <div style="border-bottom:1px dashed rgba(61,29,51,0.26)">
-          <div onClick="{{ item.toggle }}" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;cursor:pointer;min-height:44px" style-hover="opacity:0.7">
-            <span style="font-family:'Playfair Display',serif;font-size:19px;line-height:1.35">{{ item.q }}</span>
-            <span style="font-family:'Playfair Display',serif;font-size:22px;color:#E0B84A;line-height:1">{{ item.sign }}</span>
-          </div>
-          <sc-if value="{{ item.open }}" hint-placeholder-val="{{ false }}">
-            <p style="font-size:15.5px;line-height:1.7;margin:0 0 22px;max-width:68ch;opacity:0.85">{{ item.a }}</p>
-          </sc-if>
-        </div>
-      </sc-for>
+    <div class="faq-list" style="flex:1 1 420px;min-width:0">
+      <details style="border-bottom:1px dashed rgba(61,29,51,0.26)">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;cursor:pointer;min-height:44px">
+          <span style="font-family:'Playfair Display',serif;font-size:19px;line-height:1.35">Je n'ai jamais fait de pub. C'est pour moi ?</span>
+          <span class="faq-sign" style="font-family:'Playfair Display',serif;font-size:22px;color:#E0B84A;line-height:1"></span>
+        </summary>
+        <p style="font-size:15.5px;line-height:1.7;margin:0 0 22px;max-width:68ch;opacity:0.85">Oui. Le guide détaille chaque clic, chaque paramètre, avec des captures d'écran. Vous n'avez pas besoin de comprendre la plateforme pour installer le système. En revanche, si vous maîtrisez déjà Meta Ads et Make, ça ne sera effectivement pas adapté pour vous : c'est un pas-à-pas pour ceux qui ne veulent pas mettre les mains dans le cambouis, et vous le trouverez élémentaire.</p>
+      </details>
+      <details style="border-bottom:1px dashed rgba(61,29,51,0.26)">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;cursor:pointer;min-height:44px">
+          <span style="font-family:'Playfair Display',serif;font-size:19px;line-height:1.35">Il faut un budget pub en plus du kit ?</span>
+          <span class="faq-sign" style="font-family:'Playfair Display',serif;font-size:22px;color:#E0B84A;line-height:1"></span>
+        </summary>
+        <p style="font-size:15.5px;line-height:1.7;margin:0 0 22px;max-width:68ch;opacity:0.85">Oui. Le kit vous donne le système ; le budget pub, c'est le carburant. Comptez 5 € par jour pour démarrer. Versés directement à Meta, pas à moi. Vous gardez le contrôle total et vous pouvez mettre sur pause à tout moment.</p>
+      </details>
+      <details style="border-bottom:1px dashed rgba(61,29,51,0.26)">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;cursor:pointer;min-height:44px">
+          <span style="font-family:'Playfair Display',serif;font-size:19px;line-height:1.35">En quoi c'est différent d'une formation en ligne ?</span>
+          <span class="faq-sign" style="font-family:'Playfair Display',serif;font-size:22px;color:#E0B84A;line-height:1"></span>
+        </summary>
+        <p style="font-size:15.5px;line-height:1.7;margin:0 0 22px;max-width:68ch;opacity:0.85">Une formation vous apprend à pêcher. Le kit vous donne le poisson, la canne, et l'endroit exact où lancer. C'est ma pub testée, mon automatisation, mon système dupliqués chez vous. Pas un cours théorique.</p>
+      </details>
+      <details style="border-bottom:1px dashed rgba(61,29,51,0.26)">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;cursor:pointer;min-height:44px">
+          <span style="font-family:'Playfair Display',serif;font-size:19px;line-height:1.35">Et si ça ne marche pas dans ma zone ?</span>
+          <span class="faq-sign" style="font-family:'Playfair Display',serif;font-size:22px;color:#E0B84A;line-height:1"></span>
+        </summary>
+        <p style="font-size:15.5px;line-height:1.7;margin:0 0 22px;max-width:68ch;opacity:0.85">Le système est celui que j'utilise en Savoie. Les audiences et les accroches sont pensées pour des mandataires qui travaillent en local. Vous adaptez la zone géographique dans Meta Ads. Le guide vous montre comment.</p>
+      </details>
+      <details style="border-bottom:1px dashed rgba(61,29,51,0.26)">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;cursor:pointer;min-height:44px">
+          <span style="font-family:'Playfair Display',serif;font-size:19px;line-height:1.35">Je peux modifier le créatif ?</span>
+          <span class="faq-sign" style="font-family:'Playfair Display',serif;font-size:22px;color:#E0B84A;line-height:1"></span>
+        </summary>
+        <p style="font-size:15.5px;line-height:1.7;margin:0 0 22px;max-width:68ch;opacity:0.85">Oui, et c'est prévu. Le template Canva est éditable : vous changez votre nom, votre zone. Vous pouvez aussi tester vos propres variantes une fois le système en place.</p>
+      </details>
+      <details style="border-bottom:1px dashed rgba(61,29,51,0.26)">
+        <summary style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;cursor:pointer;min-height:44px">
+          <span style="font-family:'Playfair Display',serif;font-size:19px;line-height:1.35">L'appel de 30 minutes inclus dans l'offre de lancement, c'est quoi ?</span>
+          <span class="faq-sign" style="font-family:'Playfair Display',serif;font-size:22px;color:#E0B84A;line-height:1"></span>
+        </summary>
+        <p style="font-size:15.5px;line-height:1.7;margin:0 0 22px;max-width:68ch;opacity:0.85">Un appel avec moi après votre installation, pour vérifier que tout est en place et répondre à vos questions. C'est un vrai échange, pas un script commercial.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -433,23 +501,46 @@
   }
 }
 </script>
-<script type="text/x-dc" data-dc-script data-props="{&quot;checkoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Checkout&quot;},&quot;showScrapbook&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Affichage&quot;},&quot;animateReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Affichage&quot;},&quot;openAllFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenu&quot;}}">
-const FAQ = [
-  { q: "Je n'ai jamais fait de pub Facebook. C'est pour moi ?", a: "Oui. Le kit est conçu pour ça. Le guide détaille chaque clic, chaque paramètre, avec des captures d'écran. Vous n'avez pas besoin de comprendre la plateforme pour installer le système." },
-  { q: "Il faut un budget pub en plus du kit ?", a: "Oui. Le kit vous donne le système ; le budget pub, c'est le carburant. Comptez 5 € par jour pour démarrer. Versés directement à Meta, pas à moi. Vous gardez le contrôle total et vous pouvez mettre sur pause à tout moment." },
-  { q: "En quoi c'est différent d'une formation en ligne ?", a: "Une formation vous apprend à pêcher. Le kit vous donne le poisson, la canne, et l'endroit exact où lancer. C'est ma pub testée, mon automatisation, mon système dupliqués chez vous. Pas un cours théorique." },
-  { q: "Et si ça ne marche pas dans ma zone ?", a: "Le système est celui que j'utilise en Savoie. Les audiences et les accroches sont pensées pour des mandataires qui travaillent en local. Vous adaptez la zone géographique dans Meta Ads. Le guide vous montre comment." },
-  { q: "Je peux modifier le créatif ?", a: "Oui, et c'est prévu. Le template Canva est éditable : vous changez votre nom, votre zone. Vous pouvez aussi tester vos propres variantes une fois le système en place." },
-  { q: "L'appel de 30 minutes inclus dans l'offre de lancement, c'est quoi ?", a: "Un appel avec moi après votre installation, pour vérifier que tout est en place et répondre à vos questions. C'est un vrai échange, pas un script commercial." }
-];
-
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Je n'ai jamais fait de pub. C'est pour moi ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Le guide détaille chaque clic, chaque paramètre, avec des captures d'écran. Vous n'avez pas besoin de comprendre la plateforme pour installer le système. En revanche, si vous maîtrisez déjà Meta Ads et Make, ça ne sera effectivement pas adapté pour vous : c'est un pas-à-pas pour ceux qui ne veulent pas mettre les mains dans le cambouis, et vous le trouverez élémentaire." }
+    },
+    {
+      "@type": "Question",
+      "name": "Il faut un budget pub en plus du kit ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Le kit vous donne le système ; le budget pub, c'est le carburant. Comptez 5 € par jour pour démarrer. Versés directement à Meta, pas à moi. Vous gardez le contrôle total et vous pouvez mettre sur pause à tout moment." }
+    },
+    {
+      "@type": "Question",
+      "name": "En quoi c'est différent d'une formation en ligne ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Une formation vous apprend à pêcher. Le kit vous donne le poisson, la canne, et l'endroit exact où lancer. C'est ma pub testée, mon automatisation, mon système dupliqués chez vous. Pas un cours théorique." }
+    },
+    {
+      "@type": "Question",
+      "name": "Et si ça ne marche pas dans ma zone ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Le système est celui que j'utilise en Savoie. Les audiences et les accroches sont pensées pour des mandataires qui travaillent en local. Vous adaptez la zone géographique dans Meta Ads. Le guide vous montre comment." }
+    },
+    {
+      "@type": "Question",
+      "name": "Je peux modifier le créatif ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui, et c'est prévu. Le template Canva est éditable : vous changez votre nom, votre zone. Vous pouvez aussi tester vos propres variantes une fois le système en place." }
+    },
+    {
+      "@type": "Question",
+      "name": "L'appel de 30 minutes inclus dans l'offre de lancement, c'est quoi ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Un appel avec moi après votre installation, pour vérifier que tout est en place et répondre à vos questions. C'est un vrai échange, pas un script commercial." }
+    }
+  ]
+}
+</script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;checkoutUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;#&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Checkout&quot;},&quot;showScrapbook&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Affichage&quot;},&quot;animateReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Affichage&quot;}}">
 class Component extends DCLogic {
-  state = { open: -1 };
-
-  toggle(i) {
-    this.setState(s => ({ open: s.open === i ? -1 : i }));
-  }
-
   scrapNodes() {
     return Array.from(document.querySelectorAll("[style]")).filter(n => {
       const s = n.getAttribute("style") || "";
@@ -490,13 +581,8 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const all = this.props.openAllFaq === true;
     return {
-      checkoutUrl: this.props.checkoutUrl || "#",
-      faq: FAQ.map((f, i) => {
-        const open = all || this.state.open === i;
-        return { q: f.q, a: f.a, open, sign: open ? "–" : "+", toggle: () => this.toggle(i) };
-      })
+      checkoutUrl: this.props.checkoutUrl || "#"
     };
   }
 }
