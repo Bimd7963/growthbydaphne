@@ -1,12 +1,11 @@
-# Growth by Daphné
+# Daphné Martin Marin, growth marketer
 
-> Growth by Daphné aide les mandataires immobiliers à attirer des contacts qualifiés grâce à des systèmes d'acquisition locale et automatisée.
+> Portfolio de Daphné Martin Marin, growth marketer basée à Paris, disponible dès janvier 2027 pour un CDI en growth, paid acquisition ou conseil en marketing digital. Elle lance des offres et construit toute la chaîne d'acquisition, de la publicité Meta jusqu'à la signature.
 
-## Pages principales
+## Page principale
 
-- [Accueil](https://growthbydaphne.com/): présentation de Growth by Daphné et de son approche.
-- [Kit Mandataire](https://growthbydaphne.com/kit-mandataire.html): système prêt à installer avec campagne Meta Ads, automatisation et CRM.
+- [Portfolio](https://growthbydaphne.com/): trois cas chiffrés (agence immobilière, lancement d'un produit digital, automatisation), méthode, compétences et parcours en conseil (Wavestone, EDF Pulse Studio, Arval).
 
-## Sujet
+## Sujets
 
-Acquisition de vendeurs, publicité Meta Ads, automatisation des leads, CRM Google Sheets et prospection immobilière locale.
+Growth marketing, Meta Ads, lead generation, funnels de conversion, séquences email, CRM sur mesure (Google Apps Script), automatisation (Make, API), tracking (GTM, Analytics, Clarity), SEO local et GEO.
