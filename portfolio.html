@@ -655,7 +655,9 @@ p { margin: 0 0 12px; }
    La pop-up s'ouvre après le bandeau cookies, une fois par session.
 ------------------------------------------------------------------ */
 var BONJOUR = {
-  artefact: { qui: "l'équipe Artefact", cas: ["immo", "kit"] }
+  artefact: { qui: "l'équipe Artefact", cas: ["immo", "kit"] },
+  volubile: { qui: "l'équipe Volubile", cas: ["auto", "kit", "construire"],
+              texte: "Votre poste parle de workflows automatisés, de nurturing et d'IA au quotidien. Pour vous, je commencerais par là :" }
 };
 
 (function () {
@@ -674,7 +676,7 @@ var BONJOUR = {
 
   var cas = (b.cas || []).filter(function (id) { return document.querySelector('.toc a[href="#' + id + '"]'); });
   document.getElementById("hello-text").textContent = b.texte ||
-    (cas.length > 1 ? "Merci de prendre le temps de lire mon portfolio. Pour vous, je commencerais par ces deux cas :"
+    (cas.length > 1 ? "Merci de prendre le temps de lire mon portfolio. Pour vous, je commencerais par ces " + (cas.length === 2 ? "deux" : cas.length === 3 ? "trois" : "") + " sections :"
      : cas.length ? "Merci de prendre le temps de lire mon portfolio. Pour vous, je commencerais par ce cas :"
      : "Merci de prendre le temps de lire mon portfolio.");
 
