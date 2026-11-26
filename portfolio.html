@@ -114,6 +114,10 @@ p { margin: 0 0 12px; }
 .hero-body { max-width: 1080px; margin: 0 auto; padding: 60px 0 64px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
 .hero h1 { font-family: var(--serif); font-weight: 900; font-size: clamp(32px, 4.4vw, 46px); letter-spacing: 0.02em; line-height: 1.05; margin: 0; }
 .role { font-family: var(--script); font-size: clamp(26px, 3.4vw, 34px); color: var(--gold); margin: 10px 0 24px clamp(24px, 6vw, 70px); line-height: 1; }
+.hello { font-family: var(--hand); font-size: 22px; line-height: 1.35; color: var(--gold); margin: 0 0 22px; transform: rotate(-1.5deg); transform-origin: left; }
+.hello span { display: block; font-size: 19px; color: var(--milk); opacity: 0.85; }
+.hello a { color: var(--gold); border-bottom: 1px solid var(--gold); }
+.toc a.is-pick::before { content: "★ "; color: var(--gold); }
 .lede { font-size: 17px; line-height: 1.65; max-width: 50ch; opacity: 0.88; margin: 22px 0 0; }
 .contact { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-size: 14.5px; font-weight: 500; }
 .contact a, .contact span { color: inherit; white-space: nowrap; }
@@ -328,7 +332,7 @@ p { margin: 0 0 12px; }
 @media print {
   @page { margin: 12mm; }
   body { background: #fff; font-size: 11px; }
-  .nav, .toc, .dispo, .cta-actions, .seal, .shots, .lightbox, .no-print { display: none !important; }
+  .nav, .toc, .dispo, .hello, .cta-actions, .seal, .shots, .lightbox, .no-print { display: none !important; }
   .hero, .section--plum { background: #fff !important; color: var(--plum) !important; }
   .hero-body { padding: 0 0 16px; gap: 20px; }
   .funnel-card { transform: none; box-shadow: none; border: 1px solid var(--line); }
@@ -363,6 +367,7 @@ p { margin: 0 0 12px; }
 <section class="hero" id="top">
   <div class="hero-body">
     <div>
+      <p class="hello" id="hello" hidden></p>
       <h1>Daphné Martin Marin</h1>
       <p class="role">growth marketer.</p>
       <div class="filet"></div>
@@ -618,6 +623,46 @@ p { margin: 0 0 12px; }
 </dialog>
 
 <script>
+/* ------------------------------------------------------------------
+   MESSAGE PERSONNALISÉ selon ?r=...
+   Pour ajouter une entreprise : une ligne de plus dans BONJOUR.
+   - la clé = le code du lien, en minuscules (?r=artefact)
+   - qui    = ce qui suit « Bonjour »
+   - cas    = sections à conseiller, dans l'ordre :
+              methode, immo, kit, auto, competences, construire, avant
+   Un code absent de la liste (linkedin, mail...) n'affiche rien.
+------------------------------------------------------------------ */
+var BONJOUR = {
+  artefact: { qui: "l'équipe Artefact", cas: ["immo", "kit"] }
+};
+var NOMS_CAS = { methode: "ma réflexion", immo: "le cas 1", kit: "le cas 2", auto: "le cas 3", competences: "mes compétences", construire: "le labo", avant: "le conseil" };
+
+(function () {
+  var code = "";
+  try { code = (new URLSearchParams(location.search).get("r") || "").trim().toLowerCase(); } catch (e) {}
+  var b = Object.prototype.hasOwnProperty.call(BONJOUR, code) ? BONJOUR[code] : null;
+  if (!b) return;
+  var el = document.getElementById("hello");
+  el.appendChild(document.createTextNode("Bonjour " + b.qui + " 👋"));
+  var cas = (b.cas || []).filter(function (id) { return NOMS_CAS[id] && document.getElementById(id); });
+  if (cas.length) {
+    var ligne = document.createElement("span");
+    ligne.appendChild(document.createTextNode("Pour vous, je commencerais par "));
+    cas.forEach(function (id, i) {
+      if (i > 0) ligne.appendChild(document.createTextNode(i === cas.length - 1 ? " et " : ", "));
+      var a = document.createElement("a");
+      a.href = "#" + id;
+      a.textContent = NOMS_CAS[id];
+      ligne.appendChild(a);
+      var t = document.querySelector('.toc a[href="#' + id + '"]');
+      if (t) t.classList.add("is-pick");
+    });
+    ligne.appendChild(document.createTextNode("."));
+    el.appendChild(ligne);
+  }
+  el.hidden = false;
+})();
+
 /* ------------------------------------------------------------------
    DONNÉES (chiffres arrêtés au 25 novembre 2026)
 ------------------------------------------------------------------ */
